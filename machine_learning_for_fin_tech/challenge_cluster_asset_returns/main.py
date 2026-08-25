@@ -2,9 +2,11 @@ from sklearn.cluster import KMeans
 import numpy as np
 
 def cluster_asset_returns(asset_returns):
+    
     asset_names = list(asset_returns.keys())
     returns_matrix = np.array([asset_returns[asset] for asset in asset_names])
-    returns_matrix = returns_matrix.reshape(len(asset_names), -1)
+    # returns_matrix = returns_matrix.reshape(len(asset_names), -1)
+    
     kmeans = KMeans(n_clusters=2, random_state=42, n_init=10)
     kmeans.fit(returns_matrix)
     cluster_labels = kmeans.labels_
